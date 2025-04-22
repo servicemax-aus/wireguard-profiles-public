@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadDisplayName</key>
+            <string>VPN</string>
+            <key>PayloadIdentifier</key>
+            <string>COMPANY_ID_PAYLOAD</string>
+            <key>PayloadType</key>
+            <string>com.apple.vpn.managed</string>
+            <key>PayloadUUID</key>
+            <string>$Replace_Me_genUUID</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>UserDefinedName</key>
+            <string>Connect to Office</string>
+            <key>VPN</key>
+            <dict>
+                <key>AuthenticationMethod</key>
+                <string>Certificate</string>
+                <key>OnDemandEnabled</key>
+                <integer>1</integer>
+                <key>OnDemandRules</key>
+                <array>
+                    <dict>
+                        <key>Action</key>
+                        <string>Disconnect</string>
+                        <key>DNSServerAddressMatch</key>
+                        <array>
+                            <string>DNS_SERVER_PLACEHOLDER</string>
+                        </array>
+                    </dict>
+                    <dict>
+                        <key>Action</key>
+                        <string>Connect</string>
+                    </dict>
+                </array>
+                <key>RemoteAddress</key>
+                <string>ENDPOINT_PLACEHOLDER</string>
+            </dict>
+            <key>VPNSubType</key>
+            <string>com.wireguard.macos</string>
+            <key>VPNType</key>
+            <string>VPN</string>
+            <key>VendorConfig</key>
+            <dict>
+                <key>WgQuickConfig</key>
+                <string>WG_CONFIG_PLACEHOLDER</string>
+            </dict>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Wireguard</string>
+    <key>PayloadIdentifier</key>
+    <string>COMPANY_ID_PROFILE</string>
+    <key>PayloadOrganization</key>
+    <string>Servicemax</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>$Replace_Me_genUUID</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>
