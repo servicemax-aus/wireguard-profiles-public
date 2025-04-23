@@ -134,11 +134,11 @@ This provides a 1-click link to manually run the workflow.
 
 ## Mega Pro Ultra Max Bonus
 For extra points from your users you can do this too  
-- Set the Servername in `/etc/hosts` on client machines so they only have to remember `Company.Server` to connect  
-- Add a link in Mosyle's 'Self-Service.app' so they can connect with a single click  
-- If the Server is a Synology NAS you can set them up with Synology Drive so they don't even need to remember that  
+- Set the Servername in `/etc/hosts` on client machines so users only have to remember `Company.Server` to connect  
+- Add a link in Mosyle's 'Self-Service.app' so users can connect with a single click  
+- If the Server is a Synology NAS you can set them up with Synology Drive so they don't need to remember anything   
 - Because the VPN connection is 'automagic', the Synology Drive connection just works anywhere
 - Make sure you've cosidered all the security implications because going home early might not be worth it if you suddenly get unlimited holidays and zero pay...  
 
 ## 👷 Author / Maintainer
- If you use or write about this project, please include attribution to 'Adam Connor- Servicemax' so I can tell my Mum I'm famous on the internet.
+ If you can improve this project, please contribute your improvements back to the comunity. If you use or write about this project, please include attribution to 'Adam Connor- Servicemax' so I can tell my Mum I'm famous on the internet.
