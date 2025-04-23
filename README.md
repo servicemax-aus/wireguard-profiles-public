@@ -126,13 +126,13 @@ or do it manually-
 1.	Once the workflow finishes, go to the latest run under `Actions`  
 2.	Scroll down to the `Artifacts` section  
 3.	Click on `wireguard-profiles` to download all `.mobileconfig` files  
-4.	Move them to your desktop  
+4.	These can then be uploaded to Mosyle (or your MDM) and pushed to clients   
  
 ## 💡 Optional Tip- Run from Readme
-[▶️ Run Profile Generator](../../actions/workflows/generate-wireguard.yml)  
-This provides a 1-click link to manually run the workflow.
+[▶️ Run Profile Generator](../../actions/workflows/build-wireguard.yml)  
+This provides a 1-click link to manually run the workflow- click 'run' on the next page...  
 
-## Mega Pro Ultra Max Bonus
+## Mega Dream Express Pro SE Ultra Enterprise Max Bonus
 For extra points from your users you can do this too  
 - Set the Servername in `/etc/hosts` on client machines so users only have to remember `Company.Server` to connect  
 - Add a link in Mosyle's 'Self-Service.app' so users can connect with a single click  
