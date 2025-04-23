@@ -1,0 +1,30 @@
+name: Generate WireGuard Profiles
+
+on:
+  push:
+    paths:
+      - 'configs/*.conf'   # Trigger ONLY when .conf files are added or changed
+  workflow_dispatch:       # Also allow manual triggering
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install xmlstarlet
+        run: sudo apt-get update && sudo apt-get install -y xmlstarlet
+
+      - name: Make script executable
+        run: chmod +x generate.sh
+
+      - name: Run WireGuard profile generator
+        run: ./generate.sh
+
+      - name: Upload generated mobileconfig files
+        uses: actions/upload-artifact@v4
+        with:
+          name: wireguard-profiles
+          path: output/*.mobileconfig
