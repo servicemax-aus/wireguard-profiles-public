@@ -141,4 +141,4 @@ For extra points from your users you can do this too
 - Make sure you've cosidered all the security implications because going home early might not be worth it if you suddenly get unlimited holidays and zero pay...  
 
 ## 👷 Author / Maintainer
- If you can improve this project, please contribute your improvements back to the comunity. If you use or write about this project, please include attribution to 'Adam Connor- Servicemax' so I can tell my Mum I'm famous on the internet.
+ This code and accompanying text is provided without any warranty whatsoever. If you can improve this project, please contribute your improvements back to the comunity. If you use or write about this project, please include attribution to 'Adam Connor- Servicemax' so I can tell my Mum I'm famous on the internet.
