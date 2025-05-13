@@ -9,7 +9,14 @@ process_allowed_ips_to_output() {
     local allowed_ips=$2
     local output_file=$3
 
-    awk -v new_ips="$allowed_ips" '
+    # Extract the Address value from the [Interface] section
+    local interface_address=$(grep -E '^Address[[:space:]]*=' "$conf_file" | awk -F= '{print $2}' | xargs)
+
+    # Append it to the allowed IPs
+    local combined_ips="${allowed_ips},${interface_address}"
+
+    # Replace the AllowedIPs line with the combined string
+    awk -v new_ips="$combined_ips" '
     /^AllowedIPs[[:space:]]*=/ {
         print "AllowedIPs = " new_ips
         next
@@ -17,7 +24,7 @@ process_allowed_ips_to_output() {
     { print }
     ' "$conf_file" > "$output_file"
 
-    echo "✔ Replaced AllowedIPs in $conf_file"
+    echo "✔ Replaced AllowedIPs with '$combined_ips' in $conf_file"
 }
 
 generate_xml() {
