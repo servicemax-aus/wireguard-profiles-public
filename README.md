@@ -59,7 +59,10 @@ For running this shell script on a local Mac, you must have the following instal
 ## 🔧 Example env/company.env 
 In your `company.env` file, set your IPs like this-  
 **ALLOWED_IPS** are any IP addresses in the LAN or VLAN behind your Unifi router that are allowed for the client to access. Example- Server, Printer etc.  
-You can add multiple Allowed IPs, separated by a comma.  
+You can add multiple Allowed IPs, separated by a comma. You should include **VPN Server Gateway IP**, **VPN Client IP**, **DNS Server IP** and the IP of any Services that hte client is allowed to connect on the other side of the VPN. The DNS Server appears on both lines because I was lazy, I'll fix it later. 
+Why we don't use the traditional **AllowedIPs = 0.0.0.0/0** ?
+Because our way sets up a split tunnel where only traffic supposed to go over the VPN goes over the VPN. This reduces traffic on your VPN Server.
+
 **DNS_SERVER** this is the IP address of any DNS Server that will cause the Wireguard VPN to turn off.  
 ie. When the computer connects to any network with a DHCP Server, and this IP is detected as the offered DNS from a DHCP Server, then wireguard VPN will be disabled by the `.mobileconfig` Profile.  
 You can add multiple DNS Servers, separated by a comma.  
