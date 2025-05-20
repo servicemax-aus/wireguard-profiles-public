@@ -76,10 +76,10 @@ Because our way sets up a split tunnel where only traffic supposed to go over th
 ie. When the computer connects to any network with a DHCP Server, and this IP is detected as the offered DNS from a DHCP Server, then wireguard VPN will be disabled by the `.mobileconfig` Profile.  
 You can add multiple DNS Servers, separated by a comma. Assuming that-
 
-`VPN Gateway IP= 192.168.10.1/32  `
-`Company Internal DNS= 192.168.220.1/32  `
-`Company Server IP= 192.168.20.11/32  `
-`Wireguard Client IP= 192.168.10.30/32  `
+`VPN Gateway IP= 192.168.10.1/32`  
+`Company Internal DNS= 192.168.220.1/32`  
+`Company Server IP= 192.168.20.11/32`  
+`Wireguard Client IP= 192.168.10.30/32`  
 
 Your setup might not be this complicated, but here the Server is on a specific VLAN, but we still use the DNS Server IP for the management (default) VLAN, and the .env file will look like this-
 
