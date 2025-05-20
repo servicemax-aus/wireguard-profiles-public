@@ -65,8 +65,8 @@ main() {
         filename=$(basename "$conf_file" .conf)
         output_file="output/${filename}.mobileconfig"
 
-        # Extract company name from filename
-        company=$(echo "$filename" | awk -F'_' '{print $NF}')
+        # Extract company name before the first dash only
+        company=$(echo "$filename" | cut -d '-' -f 1)
         company_lower=$(echo "$company" | tr '[:upper:]' '[:lower:]')
         env_file="env/${company_lower}.env"
 
