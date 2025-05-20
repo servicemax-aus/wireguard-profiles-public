@@ -46,7 +46,7 @@ For running this shell script on a local Mac, you must have the following instal
 
 .
 ├── configs/            # WireGuard config files (input)
-│   └── First_Last_Company.conf
+│   └── Company-First_Last.conf
 ├── env/                # Lowercase .env files for each company
 │   └── company.env
 ├── output/             # Final .mobileconfig files (output)
@@ -57,25 +57,49 @@ For running this shell script on a local Mac, you must have the following instal
 
 
 ## 🔧 Example env/company.env 
-In your `company.env` file, set your IPs like this-  
+**Simplest Setup**
+The simplest way to do this is to use **AllowedIPs = 0.0.0.0/0** in the Company.env file like this example-
+
+`cat company.env`  
+`ALLOWED_IPS="0.0.0.0/0"`  
+`DNS_SERVER="192.168.0.1"`
+
+In the above example, all traffic is sent over the Wireguard interface, and everything should 'just work' 
+
+**Split Tunnel Setup**
+However, in our case we wanted to be super strict- only traffic destined for the Server inside the com[any firewall should be allowed. But this requires a few more modifications.In your `company.env` file, set your IPs like this-  
 **ALLOWED_IPS** You should include **VPN Server Gateway IP**, **VPN Client IP**, **DNS Server IP** and the IP of any Services that the client is allowed to connect on the other side of the VPN. The DNS Server appears on both lines because I was lazy, I'll fix it later. 
 Why we don't use the traditional **AllowedIPs = 0.0.0.0/0** ?
 Because our way sets up a split tunnel where only traffic supposed to go over the VPN goes over the VPN. This reduces traffic on your VPN Server.
 
 **DNS_SERVER** this is the IP address of any DNS Server that will cause the Wireguard VPN to turn off.  
 ie. When the computer connects to any network with a DHCP Server, and this IP is detected as the offered DNS from a DHCP Server, then wireguard VPN will be disabled by the `.mobileconfig` Profile.  
-You can add multiple DNS Servers, separated by a comma.  
+You can add multiple DNS Servers, separated by a comma. Assuming that-
+
+Your VPN Gateway IP= 192.168.10.1/32
+Your Companies Internal DNS= 192.168.220.1/32
+Your Companies Server IP= 192.168.20.11/32
+Your Wireguard Client IP= 192.168.10.30/32
+
+Your setup might not be this complicated, but here the Server is on a specific VLAN, but we still use the DNS Server IP for the management (default) VLAN, and the .env file will look like this-
+
 
 `cat company.env`  
-`ALLOWED_IPS="192.168.200.11/32"`  
-`DNS_SERVER="192.168.210.1"`
+`ALLOWED_IPS="192.168.10.1/32,192.168.220.1/32,192.168.20.11/32"`  
+`DNS_SERVER="192.168.0.1"`
 
+Note- you aren't adding the Wireguard clients IP because the script extracts it from the .conf file and does it for you...
 
 Name this file after the company (lowercase), matching the suffix of the .conf file.
 Example:
-You created a `.conf` file for 'John Doe' from Pepsi, the file would be- `configs/Johnn_Doe_Pepsi.conf`, the corresponding .env file should be named:
+Unifi exported a `.conf` file for 'John Doe' from Pepsi, the file would be called - 
+`Pepsi-John_Doe.conf`
 
-`env/pepsi.env`  
+And the corresponding .env file should be named:
+
+`pepsi.env`  
+
+And placed in the folder structure shown above.
 The Company name should have no spaces and capitalisation does not matter as the script sweeps through twice.  
 
 ## 🚀 How to Operate
@@ -112,7 +136,7 @@ The Company name should have no spaces and capitalisation does not matter as the
 
  ## 🧩 Bonus! Use Github Workflows
 Clone this repo, update your `template.xml` and `company.env` files, then use the workflow under `Actions` and trigger with a commit-   
-`git add configs/John_Doe_Metropolis.conf`    
+`git add configs/Metropolis-John_Doe.conf`    
 `git commit -m "Add new WireGuard config"`   
 `git push`   
 
